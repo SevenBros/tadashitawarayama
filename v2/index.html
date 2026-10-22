@@ -378,6 +378,14 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .film-card__title{margin-top:8px;font-size:9.5px;letter-spacing:.05em;line-height:1.4}
   .film-card__title em{display:block}
 }
+/* ---------- v2: "More" — first works shown, the rest one tap away ---------- */
+.is-capped{display:none!important}
+.more-btn{display:flex;align-items:center;gap:12px;margin:clamp(22px,2.6vw,36px) auto 0;padding:12px 26px;border:1px solid currentColor;border-radius:999px;
+  font-size:clamp(11.5px,.9vw,12.5px);font-weight:500;letter-spacing:.12em;text-transform:uppercase;transition:background .3s,color .3s}
+.more-btn:hover{background:var(--ink);color:var(--paper)}
+.film .more-btn{grid-column:1 / -1;color:#f2f2f2}
+.film .more-btn:hover{background:#f2f2f2;color:#0d0d0d}
+.more-btn[hidden]{display:none}
 /* ---------- v2: entrances ---------- */
 .doors{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);padding:var(--gap) var(--gutter) 0}
 .door{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:#111;color:#fff}
@@ -908,6 +916,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
         const show = !w.classList.contains('is-series-member') && (f === 'all' || w.dataset.cat.split(' ').includes(f));
         w.classList.toggle('is-hidden', !show);
       });
+      delete stillsBtn.dataset.open; capStills();
       requestAnimationFrame(() => requestAnimationFrame(() => works.forEach(w => w.classList.remove('is-fading'))));
     }, 260);
   }));
@@ -986,6 +995,30 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   works.filter(w => !w.classList.contains('is-hidden')).forEach((w, i) => {   // renumber visible tiles
     const n = w.querySelector('.work__no'); if (n) n.textContent = String(i + 1).padStart(2, '0');
   });
+
+  /* ---------- v2: "More" buttons — show the first works, reveal the rest ---------- */
+  const capList = (items, n, btn) => {
+    const shown = items.filter(x => !x.classList.contains('is-hidden'));
+    shown.forEach((x, i) => x.classList.toggle('is-capped', !btn.dataset.open && i >= n));
+    const rest = shown.length - n;
+    btn.hidden = !!btn.dataset.open || rest <= 0;
+    btn.querySelector('.more-btn__n').textContent = '(' + rest + ')';
+  };
+  const mkBtn = (label, after) => {
+    const b = document.createElement('button');
+    b.className = 'more-btn'; b.type = 'button';
+    b.innerHTML = label + ' <span class="more-btn__n"></span> <span aria-hidden="true">+</span>';
+    after.after(b); return b;
+  };
+  const STILLS_N = 12, FILMS_N = 4;
+  const stillsBtn = mkBtn('More stills', $('#grid'));
+  const capStills = () => capList(works, STILLS_N, stillsBtn);
+  stillsBtn.addEventListener('click', () => { stillsBtn.dataset.open = '1'; capStills(); });
+  const filmCards = $$('.films .film-card');
+  const filmsBtn = mkBtn('More films', $('.films'));
+  const capFilms = () => capList(filmCards, FILMS_N, filmsBtn);
+  filmsBtn.addEventListener('click', () => { filmsBtn.dataset.open = '1'; capFilms(); });
+  capStills(); capFilms();
   const series = $('#series'), seriesRow = $('#seriesRow');
   let seriesFocus = null;
   const openSeries = key => {
