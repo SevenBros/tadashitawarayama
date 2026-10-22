@@ -403,6 +403,13 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   font-size:clamp(11px,.85vw,12.5px);font-weight:500;letter-spacing:.14em;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.4)}
 .hero__next span{display:inline-block;animation:nudge 2.2s var(--ease) infinite}
 @keyframes nudge{50%{transform:translateY(5px)}}
+.hero__jump{display:inline-flex;align-items:center;gap:.7em;margin-top:clamp(18px,2.2vw,30px);padding:.95em 1.7em;border:1.5px solid #fff;border-radius:999px;
+  font-size:clamp(12px,1vw,14px);font-weight:500;letter-spacing:.14em;color:#fff;background:rgba(0,0,0,.12);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);transition:background .3s,color .3s}
+.hero__jump .sep{opacity:.6}
+.hero__jump .arr{display:inline-block;animation:nudge 2.2s var(--ease) infinite}
+.hero__jump:hover{background:#fff;color:#111}
+
 @media (min-width:1025px){.hero__next{display:inline-flex}}
 /* ---------- v2: entrances ---------- */
 .doors{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);padding:var(--gap) var(--gutter) 0}
@@ -465,9 +472,9 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     <h1 class="hero__title">Commercial<br>Photography</h1>
     <p class="hero__base caps">Based in Los Angeles &amp; Tokyo</p>
     <p class="hero__sub">Selected work / campaigns / film</p>
+    <a class="hero__jump caps" href="#doors">Stills <span class="sep">/</span> Motion <span class="arr" aria-hidden="true">↓</span></a>
   </div>
 
-  <a class="hero__next caps" href="#doors">Stills · Motion <span aria-hidden="true">↓</span></a>
   <button class="sound caps" aria-pressed="false" aria-label="Toggle sound">
     <span><b class="sound__off">Sound off</b> / <span class="sound__on">On</span></span>
     <span class="sound__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -921,6 +928,16 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
       dloop.appendChild(f);
     }), { rootMargin: '200px' }).observe(dloop);
   }
+
+  /* ---------- v3: the hero button stops where both entrances sit at the bottom of the screen ---------- */
+  const jump = $('.hero__jump'), doorsEl = $('#doors');
+  if (jump && doorsEl) jump.addEventListener('click', e => {
+    e.preventDefault();
+    const r = doorsEl.getBoundingClientRect(), pad = 24;
+    let y = r.bottom + scrollY - innerHeight + pad;               // entrances fully in view, hero still above
+    if (r.height + pad + 56 > innerHeight) y = r.top + scrollY - 56;   // very short screens: start of the entrances
+    scrollTo({ top: Math.max(0, y), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
   /* ---------- filters ---------- */
   const works = $$('.work');
   $$('.filters button').forEach(btn => btn.addEventListener('click', () => {
