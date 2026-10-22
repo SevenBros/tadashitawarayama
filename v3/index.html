@@ -409,6 +409,10 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .hero__jump .sep{opacity:.6}
 .hero__jump .arr{display:inline-block;animation:nudge 2.2s var(--ease) infinite}
 .hero__jump:hover{background:#fff;color:#111}
+/* gentle "breathing": the button softly fills white and back on its own, every ~4.5 s */
+.hero__jump:not(:hover){animation:jumpGlow 4.5s ease-in-out 2s infinite}
+@keyframes jumpGlow{0%,45%,100%{background:rgba(0,0,0,.12);color:#fff}68%,78%{background:#fff;color:#111}}
+@media (prefers-reduced-motion:reduce){.hero__jump:not(:hover){animation:none}}
 
 @media (min-width:1025px){.hero__next{display:inline-flex}}
 /* ---------- v2: entrances ---------- */
