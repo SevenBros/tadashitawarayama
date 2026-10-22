@@ -370,7 +370,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .door__loop{position:absolute;inset:0;opacity:0;transition:opacity 1.2s var(--ease)}
 .door__loop.is-playing{opacity:1}
 .door__loop iframe{position:absolute;top:50%;left:50%;border:0;pointer-events:none;
-  width:max(100cqw, calc(100cqh * 16 / 9));height:max(100cqh, calc(100cqw * 9 / 16));transform:translate(-50%,-50%)}
+  /* reel is letterboxed (~2.4:1 inside 16:9): size so the picture band covers the door */
+  width:max(100cqw, calc(100cqh * 2.4));height:calc(max(100cqw, calc(100cqh * 2.4)) * 9 / 16);transform:translate(-50%,-50%)}
 .door::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(0,0,0,.55) 0,rgba(0,0,0,0) 55%)}
 .door__label{position:absolute;left:clamp(18px,2.4vw,36px);bottom:clamp(16px,2.2vw,32px);z-index:1;display:flex;flex-direction:column;gap:.5em}
 .door__kicker{font-size:clamp(10.5px,.85vw,12px);font-weight:400;letter-spacing:.14em;opacity:.9}
