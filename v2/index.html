@@ -386,6 +386,12 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .film .more-btn{grid-column:1 / -1;color:#f2f2f2}
 .film .more-btn:hover{background:#f2f2f2;color:#0d0d0d}
 .more-btn[hidden]{display:none}
+/* ---------- v2: phone menu — always a solid, full-screen panel ---------- */
+@media (max-width:760px){
+  /* the scrolled bar's blur made the fixed menu size itself to the bar; drop it while the menu is open */
+  .site-header.menu-open{-webkit-backdrop-filter:none;backdrop-filter:none;background:var(--paper);color:var(--ink);text-shadow:none}
+  .site-header.menu-open .nav{position:fixed;inset:0;height:100vh;height:100dvh;background:var(--paper);transition:none}
+}
 /* ---------- v2: entrances ---------- */
 .doors{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);padding:var(--gap) var(--gutter) 0}
 .door{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:#111;color:#fff}
@@ -855,10 +861,11 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
   /* ---------- mobile menu ---------- */
   const menuBtn = $('.menu-btn');
-  const closeMenu = () => { header.classList.remove('menu-open'); menuBtn.setAttribute('aria-expanded','false'); menuBtn.textContent='Menu'; };
+  const closeMenu = () => { header.classList.remove('menu-open'); menuBtn.setAttribute('aria-expanded','false'); menuBtn.textContent='Menu'; document.body.style.overflow=''; };
   menuBtn.addEventListener('click', () => {
     const open = header.classList.toggle('menu-open');
     menuBtn.setAttribute('aria-expanded', open); menuBtn.textContent = open ? 'Close' : 'Menu';
+    document.body.style.overflow = open ? 'hidden' : '';
   });
   $$('.nav a').forEach(a => a.addEventListener('click', closeMenu));
 
