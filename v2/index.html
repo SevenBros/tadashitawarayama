@@ -369,6 +369,15 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .work__cap em,.work__cap .work__no,.work__type{display:none}
   .work__cap strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 }
+/* ---------- v2: phones show films in two columns ---------- */
+@media (max-width:560px){
+  .films{grid-template-columns:1fr 1fr;gap:20px 8px}
+  .film-card .play{left:8px;bottom:8px;width:26px;height:26px}
+  .film-card .play::before{border-width:4.5px 0 4.5px 7px}
+  .film-card__time{right:8px;bottom:7px;font-size:9.5px}
+  .film-card__title{margin-top:8px;font-size:9.5px;letter-spacing:.05em;line-height:1.4}
+  .film-card__title em{display:block}
+}
 /* ---------- v2: entrances ---------- */
 .doors{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);padding:var(--gap) var(--gutter) 0}
 .door{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:#111;color:#fff}
