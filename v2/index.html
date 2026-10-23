@@ -59,7 +59,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .menu-btn{display:none;font-size:12px;font-weight:500;letter-spacing:.08em;padding:7px 14px;border:1px solid currentColor;border-radius:999px}
 .site-header:not(.is-scrolled):not(.menu-open){text-shadow:0 1px 12px rgba(0,0,0,.45)}
 
-.site-header.is-scrolled{background:rgba(245,245,243,.9);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);
+.site-header.is-scrolled{background:rgba(245,245,243,.97);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);
   color:var(--ink);padding-top:12px;padding-bottom:10px;align-items:center}
 .site-header.is-scrolled .brand__role{display:none}
 .site-header.is-scrolled .brand__name{font-size:12px}
@@ -856,8 +856,9 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
   /* ---------- header: tiny sticky bar after the hero ---------- */
   const header = $('#top-bar'), hero = $('#hero');
-  new IntersectionObserver(([e]) => header.classList.toggle('is-scrolled', !e.isIntersecting),
-    { rootMargin: '-64px 0px 0px 0px' }).observe(hero);
+  /* v2/v3: the bar turns solid as soon as the page moves, so it never sits on top of other text */
+  const onScroll = () => header.classList.toggle('is-scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   /* ---------- mobile menu ---------- */
   const menuBtn = $('.menu-btn');
