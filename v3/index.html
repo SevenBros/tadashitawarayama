@@ -967,7 +967,10 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   const openPlayer = (id, title) => {
     lastFocus = document.activeElement; group = [];
     lb.classList.remove('lb--photo', 'has-nav');
-    stage.innerHTML = `<iframe src="https://player.vimeo.com/video/${id}?autoplay=1&title=0&byline=0&portrait=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${title}"></iframe>`;
+    /* phones/tablets and Safari block autoplay with sound, so Vimeo would start muted with an "Unmute" badge.
+       There, open the player paused instead: one tap on Vimeo's play button starts it with sound. */
+    const soundBlocked = matchMedia('(hover: none)').matches || /^((?!chrome|android|crios|fxios|edg).)*safari/i.test(navigator.userAgent);
+    stage.innerHTML = `<iframe src="https://player.vimeo.com/video/${id}?autoplay=${soundBlocked ? 0 : 1}&title=0&byline=0&portrait=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${title}"></iframe>`;
     lbTitle.textContent = title || '';
     show();
   };
