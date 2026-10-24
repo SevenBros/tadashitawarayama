@@ -1058,7 +1058,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     b.innerHTML = label + ' <span class="more-btn__n"></span> <span aria-hidden="true">+</span>';
     after.after(b); return b;
   };
-  const STILLS_N = 12, FILMS_N = 4;
+  const STILLS_N = 12, FILMS_N = 8;
   const stillsBtn = mkBtn('More stills', $('#grid'));
   const capStills = () => capList(works, STILLS_N, stillsBtn);
   stillsBtn.addEventListener('click', () => { stillsBtn.dataset.open = '1'; capStills(); });
