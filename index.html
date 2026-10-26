@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<meta name="robots" content="noindex">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tadashi Tawarayama — Photographer / Director</title>
@@ -48,18 +49,26 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   padding:clamp(18px,3vw,38px) var(--gutter) 0;color:#fff;
   transition:background .4s var(--ease),color .4s var(--ease),padding .4s var(--ease)}
 .brand{display:block;line-height:1.25}
-.brand__name{font-size:clamp(14px,1.15vw,16px);font-weight:400;letter-spacing:.04em}
-.brand__role{margin-top:.55em;font-size:clamp(10px,.8vw,11.5px);letter-spacing:.06em;opacity:.92}
+.brand__name{font-size:clamp(15px,1.3vw,18px);font-weight:500;letter-spacing:.04em}
+.brand__role{margin-top:.55em;font-size:clamp(11px,.9vw,13px);font-weight:400;letter-spacing:.06em;opacity:1}
 .brand__role span{margin:0 .7em}
-.nav{display:flex;gap:clamp(18px,2.3vw,34px);font-size:clamp(10.5px,.8vw,11.5px);letter-spacing:.06em;padding-top:2px}
+.nav{display:flex;gap:clamp(18px,2.3vw,34px);font-size:clamp(11.5px,.9vw,13px);font-weight:500;letter-spacing:.06em;padding-top:2px}
 .nav a{position:relative;padding:4px 0;opacity:.95;transition:opacity .3s}
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
 .nav a:hover::after,.nav a[aria-current="true"]::after{transform:scaleX(1)}
-.menu-btn{display:none;font-size:11px;letter-spacing:.08em;padding:4px 0}
+.menu-btn{display:none;font-size:12px;font-weight:500;letter-spacing:.08em;padding:7px 14px;border:1px solid currentColor;border-radius:999px}
+.site-header:not(.is-scrolled):not(.menu-open){text-shadow:0 1px 12px rgba(0,0,0,.45)}
 
-.site-header.is-scrolled{background:rgba(245,245,243,.9);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);
+.site-header.is-scrolled{background:rgba(245,245,243,.97);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);
   color:var(--ink);padding-top:12px;padding-bottom:10px;align-items:center}
-.site-header.is-scrolled .brand__role{display:none}
+.site-header.is-scrolled .brand{display:flex;align-items:baseline;flex-wrap:wrap;gap:.25em 1.4em}
+.site-header.is-scrolled .brand__role{display:block;margin-top:0;font-size:10.5px;font-weight:400;opacity:.7}
+@media (max-width:760px){
+  .site-header.is-scrolled .brand__role{font-size:8.5px;letter-spacing:.03em;white-space:nowrap}
+  .site-header.is-scrolled .brand__role span{margin:0 .45em}
+  .site-header.is-scrolled .brand__role .loc{display:inline;margin-top:0}
+  .site-header.is-scrolled .brand__role span.dot{display:inline}
+}
 .site-header.is-scrolled .brand__name{font-size:12px}
 
 /* =========================================================
@@ -99,7 +108,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 @keyframes heroIn{from{opacity:0;transform:scale(1.025)}to{opacity:1;transform:none}}
 /* legibility scrim: subtle, only behind type */
 .hero__media::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(0,0,0,.18) 0,rgba(0,0,0,0) 18%),
+  background:linear-gradient(180deg,rgba(0,0,0,.32) 0,rgba(0,0,0,0) 26%),
              linear-gradient(90deg,rgba(0,40,90,.28) 0,rgba(0,40,90,0) 45%)}
 
 /* Vimeo reel (video mode). Covers the hero, fades in only once playing;
@@ -111,7 +120,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
 .hero__copy{position:absolute;left:var(--gutter);bottom:clamp(30px,3.6vw,70px);z-index:2;max-width:92vw}
 .hero__title{margin:0;font-weight:300;font-size:clamp(40px,3.9vw,68px);line-height:1;letter-spacing:.005em;text-transform:uppercase}
-.hero__sub{margin:.9em 0 0;font-size:clamp(13px,1.15vw,16px);letter-spacing:.04em;font-weight:300;opacity:.95}
+.hero__base{margin:.85em 0 0;font-size:clamp(14px,1.3vw,19px);font-weight:400;letter-spacing:.1em}
+.hero__sub{margin:.7em 0 0;font-size:clamp(13px,1.15vw,16px);letter-spacing:.04em;font-weight:300;opacity:.95}
 .reel-btn{display:inline-flex;align-items:center;gap:22px;margin-top:clamp(18px,2.2vw,30px);font-size:clamp(11px,.95vw,13px);letter-spacing:.06em}
 .reel-btn .play{width:44px;height:44px}
 .reel-btn__meta span{margin:0 .9em;opacity:.8}
@@ -354,6 +364,82 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .prow,.prow--a,.prow--c,.prow--d{grid-template-columns:1fr}
   .foot{flex-direction:column}
 }
+
+/* ---------- v2: stills filters, easier to see ---------- */
+#work .filters{font-size:clamp(12px,1vw,13.5px);font-weight:500;gap:clamp(18px,2vw,30px);color:var(--ink-3)}
+#work .filters button{padding:4px 0}
+/* ---------- v2: phones show stills in two columns ---------- */
+@media (max-width:760px){
+  .grid{grid-template-columns:1fr 1fr;grid-auto-rows:calc((100cqw - var(--gap)) / 2 * 3 / 4)}
+  .work::after{height:60%}
+  .work__cap{left:8px;right:8px;bottom:7px;gap:6px;font-size:9.5px;letter-spacing:.03em}
+  .work__cap em,.work__cap .work__no,.work__type{display:none}
+  .work__cap strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+}
+/* ---------- v2: phones show films in two columns ---------- */
+@media (max-width:560px){
+  .films{grid-template-columns:1fr 1fr;gap:20px 8px}
+  .film-card .play{left:8px;bottom:8px;width:26px;height:26px}
+  .film-card .play::before{border-width:4.5px 0 4.5px 7px}
+  .film-card__time{right:8px;bottom:7px;font-size:9.5px}
+  .film-card__title{margin-top:8px;font-size:9.5px;letter-spacing:.05em;line-height:1.4}
+  .film-card__title em{display:block}
+}
+/* ---------- v2: "More" — first works shown, the rest one tap away ---------- */
+.is-capped{display:none!important}
+.more-btn{display:flex;align-items:center;gap:12px;margin:clamp(22px,2.6vw,36px) auto 0;padding:12px 26px;border:1px solid currentColor;border-radius:999px;
+  font-size:clamp(11.5px,.9vw,12.5px);font-weight:500;letter-spacing:.12em;text-transform:uppercase;transition:background .3s,color .3s}
+.more-btn:hover{background:var(--ink);color:var(--paper)}
+.film .more-btn{grid-column:1 / -1;color:#f2f2f2}
+.film .more-btn:hover{background:#f2f2f2;color:#0d0d0d}
+.more-btn[hidden]{display:none}
+/* ---------- v2: phone menu — always a solid, full-screen panel ---------- */
+@media (max-width:760px){
+  /* the scrolled bar's blur made the fixed menu size itself to the bar; drop it while the menu is open */
+  .site-header.menu-open{-webkit-backdrop-filter:none;backdrop-filter:none;background:var(--paper);color:var(--ink);text-shadow:none}
+  .site-header.menu-open .nav{position:fixed;inset:0;height:100vh;height:100dvh;background:var(--paper);transition:none}
+}
+/* ---------- v3: on computers the hero photo fills the whole first screen ---------- */
+@media (min-width:1025px){
+  .hero{height:100vh;height:100svh}
+  /* crop window of the same original: x 2→75%, y 22→68% — keeps both agency copy blocks out,
+     full ponytail in frame; anchored right so extra width trims the empty sky on the left */
+  .hero__frame{--ar:2.242;--iw:136.99%;--il:-2.74%;--it:-47.83%;--fx:1;--fy:.5}
+}
+.hero__next{position:absolute;right:var(--gutter);bottom:clamp(30px,3.6vw,70px);z-index:2;display:none;align-items:center;gap:12px;
+  font-size:clamp(11px,.85vw,12.5px);font-weight:500;letter-spacing:.14em;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.4)}
+.hero__next span{display:inline-block;animation:nudge 2.2s var(--ease) infinite}
+@keyframes nudge{50%{transform:translateY(5px)}}
+.hero__jump{display:inline-flex;align-items:center;gap:.7em;margin-top:clamp(18px,2.2vw,30px);padding:.95em 1.7em;border:1.5px solid #fff;border-radius:999px;
+  font-size:clamp(12px,1vw,14px);font-weight:500;letter-spacing:.14em;color:#fff;background:rgba(0,0,0,.12);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);transition:background .3s,color .3s}
+.hero__jump .sep{opacity:.6}
+.hero__jump .arr{display:inline-block;animation:nudge 2.2s var(--ease) infinite}
+.hero__jump:hover{background:#fff;color:#111}
+/* right after the page opens, the button slowly fills white once and returns */
+.hero__jump:not(:hover){animation:jumpGlow 3.6s ease-in-out .8s 1}
+@keyframes jumpGlow{0%,100%{background:rgba(0,0,0,.12);color:#fff}40%,60%{background:#fff;color:#111}}
+@media (prefers-reduced-motion:reduce){.hero__jump:not(:hover){animation:none}}
+
+@media (min-width:1025px){.hero__next{display:inline-flex}}
+/* ---------- v2: entrances ---------- */
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);padding:var(--gap) var(--gutter) 0}
+.door{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:#111;color:#fff}
+.door__media{position:absolute;inset:0;container-type:size}
+.door__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s var(--ease),transform 6s linear}
+.door__media img.is-on{opacity:1;transform:scale(1.04)}
+.door__loop{position:absolute;inset:0;opacity:0;transition:opacity 1.2s var(--ease)}
+.door__loop.is-playing{opacity:1}
+.door__loop iframe{position:absolute;top:50%;left:50%;border:0;pointer-events:none;
+  /* reel is letterboxed (~2.4:1 inside 16:9): size so the picture band covers the door */
+  width:max(100cqw, calc(100cqh * 2.4));height:calc(max(100cqw, calc(100cqh * 2.4)) * 9 / 16);transform:translate(-50%,-50%)}
+.door::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(0,0,0,.55) 0,rgba(0,0,0,0) 55%)}
+.door__label{position:absolute;left:clamp(18px,2.4vw,36px);bottom:clamp(16px,2.2vw,32px);z-index:1;display:flex;flex-direction:column;gap:.5em}
+.door__kicker{font-size:clamp(10.5px,.85vw,12px);font-weight:400;letter-spacing:.14em;opacity:.9}
+.door__title{font-size:clamp(34px,3.8vw,60px);font-weight:200;line-height:1;letter-spacing:.02em}
+.door__go{font-size:clamp(11px,.9vw,12.5px);font-weight:500;letter-spacing:.1em;margin-top:.4em}
+.door:hover .door__go{text-decoration:underline;text-underline-offset:4px}
+@media (max-width:760px){.doors{grid-template-columns:1fr}.door{aspect-ratio:16/11}}
 </style>
 </head>
 
@@ -395,17 +481,41 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
   <div class="hero__copy">
     <h1 class="hero__title">Commercial<br>Photography</h1>
+    <p class="hero__base caps">Based in Los Angeles &amp; Tokyo</p>
     <p class="hero__sub">Selected work / campaigns / film</p>
-    <button class="reel-btn caps" data-play="476720234" data-title="DP Reel Tad F">
-      <span class="play" aria-hidden="true"></span>
-      <span class="reel-btn__meta">DP Reel Tad F<span>—</span>01:17</span>
-    </button>
+    <a class="hero__jump caps" href="#doors">Stills <span class="sep">/</span> Motion <span class="arr" aria-hidden="true">↓</span></a>
   </div>
 
   <button class="sound caps" aria-pressed="false" aria-label="Toggle sound">
     <span><b class="sound__off">Sound off</b> / <span class="sound__on">On</span></span>
     <span class="sound__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
   </button>
+</section>
+
+<!-- =====================================================
+     ENTRANCES — Stills / Motion (v2)
+     ===================================================== -->
+<section class="doors" id="doors" aria-label="Stills and Motion">
+  <a class="door door--stills" href="#work">
+    <span class="door__media door__slides">
+        <img src="images/SHOHEI_Final.jpg" alt="Shohei Ohtani" style="object-position:50% 28%" class="is-on" loading="eager" decoding="async">
+        <img src="images/MYTREX_ROLA_zen_A_221226_fix_T00%2Bcopy.jpg" alt="Mytrex" style="object-position:50% 22%" loading="eager" decoding="async">
+        <img src="images/ad101.jpg" alt="ANA — Naomi Osaka" style="object-position:50% 10%" loading="lazy" decoding="async">
+        <img src="images/191115_products0567a.jpg" alt="Chanel" style="object-position:50% 45%" loading="lazy" decoding="async">
+        <img src="images/DAIWA.jpg" alt="Daiwa House" style="object-position:50% 40%" loading="lazy" decoding="async">
+        <img src="images/2EE52743-CF91-4641-8A25-4C87C64BD440.jpg" alt="Fashion — Downtown LA" style="object-position:50% 40%" loading="lazy" decoding="async">
+        <img src="images/REDBULL06.jpg" alt="Red Bull" style="object-position:50% 50%" loading="lazy" decoding="async">
+        <img src="images/20250417_PC_2880x1384_red.jpg" alt="Subaru" style="object-position:50% 55%" loading="lazy" decoding="async">
+    </span>
+    <span class="door__label"><span class="door__kicker caps">Commercial</span><span class="door__title caps">Stills</span><span class="door__go caps">View work →</span></span>
+  </a>
+  <a class="door door--motion" href="#film">
+    <span class="door__media">
+      <img class="is-on" src="https://i.vimeocdn.com/video/990434214-6e292f7f92497734b08f05cb0cc4f4db5d64f69396abaee160f7bee6c72340e5-d_1280x720" alt="" decoding="async">
+      <span class="door__loop" data-vimeo="476720234"></span>
+    </span>
+    <span class="door__label"><span class="door__kicker caps">Director of Photography</span><span class="door__title caps">Motion</span><span class="door__go caps">Watch reel →</span></span>
+  </a>
 </section>
 
 <!-- =====================================================
@@ -417,188 +527,193 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
      ===================================================== -->
 <section class="section" id="work">
   <div class="section-head">
-    <h2 class="section-title">Selected Works</h2>
+    <h2 class="section-title">Stills</h2>
+    <div class="filters" role="group" aria-label="Filter stills">
+      <button data-filter="all" aria-pressed="true">All</button>
+      <button data-filter="people" aria-pressed="false">People</button>
+      <button data-filter="product" aria-pressed="false">Product</button>
+    </div>
   </div>
 
   <!-- SERIES: give tiles the same data-series="key" to group them.
        The tile with data-series-cover is shown in the grid; clicking it opens the
        series page with every frame side by side. Other members are hidden from the grid. -->
   <div class="grid" id="grid">
-    <figure class="work reveal" tabindex="0" style="--pos:50% 35%">
+    <figure data-cat="people" class="work reveal" tabindex="0" style="--pos:50% 35%">
       <img src="images/SHOHEI_Final.jpg" alt="Shohei Ohtani — brand campaign" width="2500" height="3240" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Shohei Ohtani</strong><em>— Brand Campaign</em><span class="sp"></span><span class="work__no">01</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" data-series="mytrex" data-series-cover style="--pos:50% 22%">
+    <figure data-cat="people" class="work reveal" tabindex="0" data-series="mytrex" data-series-cover style="--pos:50% 22%">
       <img src="images/MYTREX_ROLA_zen_A_221226_fix_T00%2Bcopy.jpg" alt="MYTREX REBIVE ZEN — beauty campaign" width="2500" height="1394" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Mytrex</strong><em>— Beauty / Campaign</em><span class="sp"></span><span class="work__no">02</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 55%">
+    <figure data-cat="product" class="work reveal" tabindex="0" style="--pos:50% 55%">
       <img src="images/20250417_PC_2880x1384_red.jpg" alt="Subaru New Forester" width="2500" height="1201" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Subaru</strong><em>— Automotive</em><span class="sp"></span><span class="work__no">03</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" data-series="strong-zero" data-series-cover style="--pos:50% 62%">
+    <figure data-cat="people" class="work reveal" tabindex="0" data-series="strong-zero" data-series-cover style="--pos:50% 62%">
       <img src="images/190930_LEMON_A4_1.jpg" alt="Suntory -196 Strong Zero" width="5000" height="3535" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Suntory</strong><em>— Strong Zero</em><span class="sp"></span><span class="work__no">25</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" data-series="strong-zero" style="--pos:50% 45%">
+    <figure data-cat="people" class="work reveal" tabindex="0" data-series="strong-zero" style="--pos:50% 45%">
       <img src="images/191008_LEMON_tokyo_digital-sheet_1.jpg" alt="Suntory -196 Strong Zero" width="4219" height="5000" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Suntory</strong><em>— Strong Zero</em><span class="sp"></span><span class="work__no">04</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 0%">
+    <figure data-cat="people" class="work reveal" tabindex="0" style="--pos:50% 0%">
       <img src="images/ad101.jpg" alt="ANA — Naomi Osaka out-of-home" width="4014" height="2840" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>ANA</strong><em>— Naomi Osaka / OOH</em><span class="sp"></span><span class="work__no">05</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 45%">
+    <figure data-cat="product" class="work reveal" tabindex="0" style="--pos:50% 45%">
       <img src="images/191115_products0567a.jpg" alt="Chanel Gabrielle — product" width="2222" height="1667" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Chanel</strong><em>— Gabrielle</em><span class="sp"></span><span class="work__no">06</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" data-series="beauty-portrait" style="--pos:50% 30%">
+    <figure data-cat="people" class="work reveal" tabindex="0" data-series="beauty-portrait" style="--pos:50% 30%">
       <img src="images/211002_TEST_0037.jpg" alt="Beauty portrait" width="1000" height="1500" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Beauty</strong><em>— Portrait</em><span class="sp"></span><span class="work__no">07</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 28%">
+    <figure data-cat="people" class="work reveal" tabindex="0" style="--pos:50% 28%">
       <img src="images/DAIWA.jpg" alt="Daiwa House — Daiwaman" width="7022" height="6800" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Daiwa House</strong><em>— Daiwaman</em><span class="sp"></span><span class="work__no">00</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 42%">
+    <figure data-cat="product" class="work reveal" tabindex="0" style="--pos:50% 42%">
       <img src="images/TOYOTIRE2021_Summer-UP_v4.jpg" alt="Toyo Tires — campaign" width="2000" height="1565" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Toyo Tires</strong><em>— Campaign</em><span class="sp"></span><span class="work__no">08</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 30%">
+    <figure data-cat="people" class="work reveal" tabindex="0" style="--pos:50% 30%">
       <img src="images/19_SoftBank.jpg" alt="SoftBank — Pantone Slide campaign" width="1800" height="1200" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>SoftBank</strong><em>— Campaign</em><span class="sp"></span><span class="work__no">09</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 0%">
+    <figure data-cat="people" class="work reveal" tabindex="0" style="--pos:50% 0%">
       <img src="images/LIPOD_SMALL.jpg" alt="Taisho Lipovitan D — Rui Hachimura" width="1078" height="1506" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Lipovitan D</strong><em>— Rui Hachimura</em><span class="sp"></span><span class="work__no">10</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" data-series="fashion-dtla" data-series-cover style="--pos:50% 10%">
+    <figure data-cat="people" class="work reveal" tabindex="0" data-series="fashion-dtla" data-series-cover style="--pos:50% 10%">
       <img src="images/2EE52743-CF91-4641-8A25-4C87C64BD440.jpg" alt="Fashion — downtown Los Angeles" width="2500" height="1903" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Fashion</strong><em>— Downtown LA</em><span class="sp"></span><span class="work__no">11</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 35%">
+    <figure data-cat="people" class="work reveal" tabindex="0" style="--pos:50% 35%">
       <img src="images/240111_KONAMI_pr_GR_16_9_RGB_nohin_01.jpg" alt="KONAMI — brand campaign with Shohei Ohtani" width="2500" height="1406" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Konami</strong><em>— Brand Campaign</em><span class="sp"></span><span class="work__no">12</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 58%">
+    <figure data-cat="product" class="work reveal" tabindex="0" style="--pos:50% 58%">
       <img src="images/23170578044_f628c51eb4_o.jpg" alt="HMW — custom motorcycle" width="2213" height="1660" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>HMW</strong><em>— Custom Motorcycle</em><span class="sp"></span><span class="work__no">13</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 35%">
+    <figure data-cat="people" class="work reveal" tabindex="0" style="--pos:50% 35%">
       <img src="images/GAIGO_YOKO%20copy03%20copy.jpg" alt="ECC — Shohei Ohtani" width="8595" height="5333" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>ECC</strong><em>— Shohei Ohtani</em><span class="sp"></span><span class="work__no">14</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" data-series="beauty-portrait" data-series-cover style="--pos:50% 24%">
+    <figure data-cat="people" class="work reveal" tabindex="0" data-series="beauty-portrait" data-series-cover style="--pos:50% 24%">
       <img src="images/211002_TEST_0033%2Bcopy.jpg" alt="Beauty portrait" width="1000" height="1500" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Beauty</strong><em>— Portrait</em><span class="sp"></span><span class="work__no">15</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 50%">
+    <figure data-cat="product" class="work reveal" tabindex="0" style="--pos:50% 50%">
       <img src="images/%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC%E6%A8%AAA_H1800W6000_ol%2Bcopy.jpg" alt="Subaru New Forester" width="2500" height="1213" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Subaru</strong><em>— New Forester</em><span class="sp"></span><span class="work__no">16</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 46%">
+    <figure data-cat="product" class="work reveal" tabindex="0" style="--pos:50% 46%">
       <img src="images/REDBULL06.jpg" alt="Red Bull — product" width="4924" height="5637" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Red Bull</strong><em>— Product</em><span class="sp"></span><span class="work__no">17</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 42%">
+    <figure data-cat="people product" class="work reveal" tabindex="0" style="--pos:50% 42%">
       <img src="images/CG02.jpg" alt="Crystal Geyser — campaign" width="673" height="956" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Crystal Geyser</strong><em>— Campaign</em><span class="sp"></span><span class="work__no">00</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 55%">
+    <figure data-cat="product" class="work reveal" tabindex="0" style="--pos:50% 55%">
       <img src="images/au_original_020-1.jpg" alt="au — campaign" width="2500" height="1663" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>au</strong><em>— Campaign</em><span class="sp"></span><span class="work__no">18</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 29%">
+    <figure data-cat="people" class="work reveal" tabindex="0" style="--pos:50% 29%">
       <img src="images/Nissy-NA01.jpg" alt="Nissy — artist visual" width="1200" height="1200" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Nissy</strong><em>— Artist Visual</em><span class="sp"></span><span class="work__no">19</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" data-series="fashion-dtla" style="--pos:50% 50%">
+    <figure data-cat="people" class="work reveal" tabindex="0" data-series="fashion-dtla" style="--pos:50% 50%">
       <img src="images/22BC387C-EC82-4EA0-A0BB-801414538846.jpg" alt="Fashion — downtown Los Angeles" width="2500" height="1903" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Fashion</strong><em>— Downtown LA</em><span class="sp"></span><span class="work__no">20</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 50%">
+    <figure data-cat="people" class="work reveal" tabindex="0" style="--pos:50% 50%">
       <img src="images/oikos_kv2_w2_1920_1080a.jpg" alt="Oikos PRO — Rui Hachimura" width="1920" height="1080" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Oikos</strong><em>— PRO / Rui Hachimura</em><span class="sp"></span><span class="work__no">00</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 55%">
+    <figure data-cat="people" class="work reveal" tabindex="0" style="--pos:50% 55%">
       <img src="images/170905UHA_ema_B1_72dpi.jpg" alt="UHA Mikakuto e-ma × E-girls" width="2500" height="1769" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>UHA Mikakuto</strong><em>— e-ma × E-girls</em><span class="sp"></span><span class="work__no">21</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" data-series="strong-zero" style="--pos:50% 45%">
+    <figure data-cat="people" class="work reveal" tabindex="0" data-series="strong-zero" style="--pos:50% 45%">
       <img src="images/191008_LEMON_tokyo_digital-sheet_3.jpg" alt="Suntory -196 Strong Zero" width="4219" height="5000" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Suntory</strong><em>— Strong Zero</em><span class="sp"></span><span class="work__no">22</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" data-series="beauty-portrait" style="--pos:50% 50%">
+    <figure data-cat="people" class="work reveal" tabindex="0" data-series="beauty-portrait" style="--pos:50% 50%">
       <img src="images/211002_TEST_0040.jpg" alt="Beauty portrait" width="1000" height="1500" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Beauty</strong><em>— Portrait</em><span class="sp"></span><span class="work__no">23</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 30%">
+    <figure data-cat="people" class="work reveal" tabindex="0" style="--pos:50% 30%">
       <img src="images/IMG_8058.JPG" alt="Morinaga — in Bar" width="4093" height="2894" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Morinaga</strong><em>— in Bar</em><span class="sp"></span><span class="work__no">24</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" style="--pos:50% 62%">
+    <figure data-cat="product" class="work reveal" tabindex="0" style="--pos:50% 62%">
       <img src="images/p_H4A7560re02%2Bcopy.jpg" alt="Chevrolet Equinox — Find New Roads" width="2500" height="1667" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Chevrolet</strong><em>— Equinox</em><span class="sp"></span><span class="work__no">00</span></figcaption>
     </figure>
 
-    <figure class="work reveal" tabindex="0" data-series="mytrex" style="--pos:50% 25%">
+    <figure data-cat="people" class="work reveal" tabindex="0" data-series="mytrex" style="--pos:50% 25%">
       <img src="images/MYTREX_ROLA_zen_B_221226_fix_T00%2Bcopy.jpg" alt="MYTREX REBIVE ZEN — beauty campaign" width="2500" height="1667" loading="lazy" decoding="async">
       <span class="work__type caps">Still</span>
       <figcaption class="work__cap"><strong>Mytrex</strong><em>— Beauty / Campaign</em><span class="sp"></span><span class="work__no">26</span></figcaption>
@@ -651,13 +766,61 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
       <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/2138245727-8c00196a37d6437fb5facd586e73d8890d89832498a78ff2c891ad182c632383-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">00:15</span></span>
       <span class="film-card__title">Oikos PRO <em>— TV CM</em></span>
     </button>
-    <button class="film-card reveal" data-play="399338286" data-title="ANA — Naomi Osaka / 15 sec">
-      <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/867314027-0730f4b04699b427a4814a5d9b94d92eb713e4cb04072c6f56e87e037ba91a8a-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">00:15</span></span>
-      <span class="film-card__title">ANA <em>— Naomi Osaka / 15 sec</em></span>
+    <button class="film-card reveal" data-play="594402463" data-title="ANA — Naomi Osaka / US 60 sec">
+      <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/2216352373-0567e6344bd5f1be93ab9349b6ecdda9a53cc8f648f87bc228c2d82c9c0dd719-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">01:00</span></span>
+      <span class="film-card__title">ANA <em>— Naomi Osaka / US 60 sec</em></span>
+    </button>
+    <button class="film-card reveal" data-play="258449964" data-title="ANA — Yuzuru Hanyu / TVCM 60 sec">
+      <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/686632765-88cc4c66829f368cf9fffbf569346b8712ddfce34045f576ac3c97fb83656fbb-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">01:00</span></span>
+      <span class="film-card__title">ANA <em>— Yuzuru Hanyu / TVCM 60 sec</em></span>
     </button>
     <button class="film-card reveal" data-play="596713689" data-title="NISSIN — Karamen">
       <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/1910693369-7a76d99f32f7883c8f46ca31ed205f3211f46d4c524211228a724d1b027c1189-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">00:30</span></span>
       <span class="film-card__title">NISSIN <em>— Karamen</em></span>
+    </button>
+    <button class="film-card reveal" data-play="262582150" data-title="Subaru — Short Stories “Buddy”">
+      <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/691892776-3f4aeb1b0a94703b87fc4e4a033897d7f4ee173efdd181dae7bbd410935e9b56-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">00:30</span></span>
+      <span class="film-card__title">Subaru <em>— Short Stories “Buddy”</em></span>
+    </button>
+    <button class="film-card reveal" data-play="492112407" data-title="G-SHOCK — MY TIME / 15 sec">
+      <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/1910903143-94bf962b05c39d78927610b2ffa82c4c7af75889fcd2cf53214d56035c3aa049-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">00:15</span></span>
+      <span class="film-card__title">G-SHOCK <em>— MY TIME / 15 sec</em></span>
+    </button>
+    <button class="film-card reveal" data-play="780025275" data-title="DocuSign — 90 sec">
+      <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/1910687579-1f72fefa07987419f22ccb4531bc155dd3e391c76889e1c1f7303241971e643d-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">01:32</span></span>
+      <span class="film-card__title">DocuSign <em>— 90 sec</em></span>
+    </button>
+    <button class="film-card reveal" data-play="756297652" data-title="MYTREX — 30 sec">
+      <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/1910688535-6053572a4830cb380f46b2f6e6724837581b109899ec9ac78ae46418404dfcfb-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">00:30</span></span>
+      <span class="film-card__title">MYTREX <em>— 30 sec</em></span>
+    </button>
+    <button class="film-card reveal" data-play="826959617" data-title="MARK &amp; LONA — 2023 SS “El Dorado”">
+      <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/1670144057-1003dc4b7a20f8c77ad24e0546342eeda9ff9f3dd662c986f4eba97fd2d77f77-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">00:30</span></span>
+      <span class="film-card__title">MARK &amp; LONA <em>— 2023 SS “El Dorado”</em></span>
+    </button>
+    <button class="film-card reveal" data-play="399337584" data-title="NTT docomo — Style ’20">
+      <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/1910895130-1f6a4e09750fed6f2fee310ae3cec976472f2033e11f8d5862e5aad9a08edcff-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">00:30</span></span>
+      <span class="film-card__title">NTT docomo <em>— Style ’20</em></span>
+    </button>
+    <button class="film-card reveal" data-play="296720779" data-title="MOUSSY — Studio Wear “Pool Side”">
+      <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/734219428-26cf8d0cc4463d4d773d2743c5d94b56c78def4ce2b1d0b463c0105e21b33499-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">00:20</span></span>
+      <span class="film-card__title">MOUSSY <em>— Studio Wear “Pool Side”</em></span>
+    </button>
+    <button class="film-card reveal" data-play="674306975" data-title="TOTO — 60 sec">
+      <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/1910691683-87edc26e354f26d6273cde21d4a5cfe87f17dd45873176f440637fbf0f78f855-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">01:00</span></span>
+      <span class="film-card__title">TOTO <em>— 60 sec</em></span>
+    </button>
+    <button class="film-card reveal" data-play="399338286" data-title="ANA — Naomi Osaka / 15 sec">
+      <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/867314027-0730f4b04699b427a4814a5d9b94d92eb713e4cb04072c6f56e87e037ba91a8a-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">00:15</span></span>
+      <span class="film-card__title">ANA <em>— Naomi Osaka / 15 sec</em></span>
+    </button>
+    <button class="film-card reveal" data-play="89206216" data-title="United Arrows — Beauty &amp; Youth / TVCM">
+      <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/468641124-17d7c9601b5869c13716263ca40807647ddcf181b7f8bd0b946e238746ffc616-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">00:32</span></span>
+      <span class="film-card__title">United Arrows <em>— Beauty &amp; Youth / TVCM</em></span>
+    </button>
+    <button class="film-card reveal" data-play="430828312" data-title="Xoom — UK 2011">
+      <span class="film-card__thumb"><img src="https://i.vimeocdn.com/video/911641800-21196c0415513946d0fc8c82ced5945db80faf149d7882342dd8b09d7570fc59-d_960x540" alt="" loading="lazy" decoding="async"><span class="play" aria-hidden="true"></span><span class="film-card__time">00:30</span></span>
+      <span class="film-card__title">Xoom <em>— UK 2011</em></span>
     </button>
   </div>
 </section>
@@ -772,15 +935,17 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
   /* ---------- header: tiny sticky bar after the hero ---------- */
   const header = $('#top-bar'), hero = $('#hero');
-  new IntersectionObserver(([e]) => header.classList.toggle('is-scrolled', !e.isIntersecting),
-    { rootMargin: '-64px 0px 0px 0px' }).observe(hero);
+  /* v2/v3: the bar turns solid as soon as the page moves, so it never sits on top of other text */
+  const onScroll = () => header.classList.toggle('is-scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   /* ---------- mobile menu ---------- */
   const menuBtn = $('.menu-btn');
-  const closeMenu = () => { header.classList.remove('menu-open'); menuBtn.setAttribute('aria-expanded','false'); menuBtn.textContent='Menu'; };
+  const closeMenu = () => { header.classList.remove('menu-open'); menuBtn.setAttribute('aria-expanded','false'); menuBtn.textContent='Menu'; document.body.style.overflow=''; };
   menuBtn.addEventListener('click', () => {
     const open = header.classList.toggle('menu-open');
     menuBtn.setAttribute('aria-expanded', open); menuBtn.textContent = open ? 'Close' : 'Menu';
+    document.body.style.overflow = open ? 'hidden' : '';
   });
   $$('.nav a').forEach(a => a.addEventListener('click', closeMenu));
 
@@ -805,6 +970,34 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   setTimeout(revealAll, 1800);
   window.addEventListener('load', () => setTimeout(revealAll, 300));
 
+
+  /* ---------- v2: Stills slideshow + Motion loop in the entrances ---------- */
+  const slides = $$('.door__slides img');
+  if (slides.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let si = 0;
+    setInterval(() => { slides[si].classList.remove('is-on'); si = (si + 1) % slides.length; slides[si].loading = 'eager'; slides[si].classList.add('is-on'); }, 3200);
+  }
+  const dloop = $('.door__loop');
+  if (dloop && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    new IntersectionObserver((es, o) => es.forEach(e => {
+      if (!e.isIntersecting) return; o.disconnect();
+      const f = document.createElement('iframe');
+      f.src = `https://player.vimeo.com/video/${dloop.dataset.vimeo}?background=1&autoplay=1&loop=1&muted=1&dnt=1`;
+      f.allow = 'autoplay'; f.title = ''; f.tabIndex = -1;
+      f.addEventListener('load', () => setTimeout(() => dloop.classList.add('is-playing'), 1200), { once: true });
+      dloop.appendChild(f);
+    }), { rootMargin: '200px' }).observe(dloop);
+  }
+
+  /* ---------- v3: the hero button stops where both entrances sit at the bottom of the screen ---------- */
+  const jump = $('.hero__jump'), doorsEl = $('#doors');
+  if (jump && doorsEl) jump.addEventListener('click', e => {
+    e.preventDefault();
+    const r = doorsEl.getBoundingClientRect(), pad = 24;
+    let y = r.bottom + scrollY - innerHeight + pad;               // entrances fully in view, hero still above
+    if (r.height + pad + 56 > innerHeight) y = r.top + scrollY - 56;   // very short screens: start of the entrances
+    scrollTo({ top: Math.max(0, y), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
   /* ---------- filters ---------- */
   const works = $$('.work');
   $$('.filters button').forEach(btn => btn.addEventListener('click', () => {
@@ -813,9 +1006,10 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     works.forEach(w => w.classList.add('is-fading'));
     setTimeout(() => {
       works.forEach(w => {
-        const show = f === 'all' || w.dataset.cat.split(' ').includes(f);
+        const show = !w.classList.contains('is-series-member') && (f === 'all' || w.dataset.cat.split(' ').includes(f));
         w.classList.toggle('is-hidden', !show);
       });
+      delete stillsBtn.dataset.open; capStills();
       requestAnimationFrame(() => requestAnimationFrame(() => works.forEach(w => w.classList.remove('is-fading'))));
     }, 260);
   }));
@@ -829,7 +1023,10 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   const openPlayer = (id, title) => {
     lastFocus = document.activeElement; group = [];
     lb.classList.remove('lb--photo', 'has-nav');
-    stage.innerHTML = `<iframe src="https://player.vimeo.com/video/${id}?autoplay=1&title=0&byline=0&portrait=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${title}"></iframe>`;
+    /* phones/tablets and Safari block autoplay with sound, so Vimeo would start muted with an "Unmute" badge.
+       There, open the player paused instead: one tap on Vimeo's play button starts it with sound. */
+    const soundBlocked = matchMedia('(hover: none)').matches || /^((?!chrome|android|crios|fxios|edg).)*safari/i.test(navigator.userAgent);
+    stage.innerHTML = `<iframe src="https://player.vimeo.com/video/${id}?autoplay=${soundBlocked ? 0 : 1}&title=0&byline=0&portrait=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${title}"></iframe>`;
     lbTitle.textContent = title || '';
     show();
   };
@@ -894,6 +1091,30 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   works.filter(w => !w.classList.contains('is-hidden')).forEach((w, i) => {   // renumber visible tiles
     const n = w.querySelector('.work__no'); if (n) n.textContent = String(i + 1).padStart(2, '0');
   });
+
+  /* ---------- v2: "More" buttons — show the first works, reveal the rest ---------- */
+  const capList = (items, n, btn) => {
+    const shown = items.filter(x => !x.classList.contains('is-hidden'));
+    shown.forEach((x, i) => x.classList.toggle('is-capped', !btn.dataset.open && i >= n));
+    const rest = shown.length - n;
+    btn.hidden = !!btn.dataset.open || rest <= 0;
+    btn.querySelector('.more-btn__n').textContent = '(' + rest + ')';
+  };
+  const mkBtn = (label, after) => {
+    const b = document.createElement('button');
+    b.className = 'more-btn'; b.type = 'button';
+    b.innerHTML = label + ' <span class="more-btn__n"></span> <span aria-hidden="true">+</span>';
+    after.after(b); return b;
+  };
+  const STILLS_N = 12, FILMS_N = 8;
+  const stillsBtn = mkBtn('More stills', $('#grid'));
+  const capStills = () => capList(works, STILLS_N, stillsBtn);
+  stillsBtn.addEventListener('click', () => { stillsBtn.dataset.open = '1'; capStills(); });
+  const filmCards = $$('.films .film-card');
+  const filmsBtn = mkBtn('More films', $('.films'));
+  const capFilms = () => capList(filmCards, FILMS_N, filmsBtn);
+  filmsBtn.addEventListener('click', () => { filmsBtn.dataset.open = '1'; capFilms(); });
+  capStills(); capFilms();
   const series = $('#series'), seriesRow = $('#seriesRow');
   let seriesFocus = null;
   const openSeries = key => {
