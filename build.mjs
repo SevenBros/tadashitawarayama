@@ -61,6 +61,7 @@ await fs.rm(OUT, { recursive: true, force: true });
 await fs.mkdir(STATIC, { recursive: true });
 await fs.writeFile(path.join(STATIC, 'index.html'), html);
 await copyDir('images', path.join(STATIC, 'images'));
+for (const f of await fs.readdir('.')) if (/^google[0-9a-f]+\.html$/.test(f)) await fs.copyFile(f, path.join(STATIC, f));   // Search Console verification
 await fs.writeFile(path.join(STATIC, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
 await fs.writeFile(path.join(STATIC, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${SITE}/</loc></url></urlset>\n`);
