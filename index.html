@@ -1261,7 +1261,6 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   Object.values(seriesMap).forEach(list => {
     const cover = list.find(w => w.hasAttribute('data-series-cover')) || list[0];
     list.forEach(w => { if (w !== cover) w.classList.add('is-hidden', 'is-series-member'); });
-    cover.insertAdjacentHTML('beforeend', `<span class="work__series" aria-label="Series of ${list.length}"><i></i>${list.length}</span>`);
   });
   works.filter(w => !w.classList.contains('is-hidden')).forEach((w, i) => {   // renumber visible tiles
     const n = w.querySelector('.work__no'); if (n) n.textContent = String(i + 1).padStart(2, '0');
